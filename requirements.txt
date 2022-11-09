@@ -1,2 +1,4 @@
 pymongo==4.2.0
+from-root==1.0.2
+
 -e .

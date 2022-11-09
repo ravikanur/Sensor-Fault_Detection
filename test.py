@@ -1,7 +1,14 @@
-f1 = []
-with open('requirements.txt', 'r') as file:
-    for line in file:
-        line = line.rstrip()
-        f1.append(line)
+from sensor.logger import logging
+from dataclasses import dataclass
 
-print(f1)
+@dataclass
+class Test:
+    logging.info('sample message')
+    height: int
+    name: str = 'Ravi'
+    age: int = 0
+    
+
+if __name__ == "__main__":
+    test = Test(20)
+    logging.info(test.name)

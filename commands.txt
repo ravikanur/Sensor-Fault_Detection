@@ -1,0 +1,11 @@
+Commands to install docker in EC2
+sudo apt -get update -y
+sudo apt -ge upgrade
+
+curl -fsSL https://get.docker.com -o get-docker.sh
+sudo sh get-docker.sh
+sudo usermod -aG docker ubuntu
+newgrp docker
+
+https://github.com/avnyadav/sensor-fault-detection
+
