@@ -1,6 +1,7 @@
 import sys
 
 from sensor.components.data_ingestion import DataIngestion
+from sensor.components.data_validation import DataValidation
 from sensor.entity.config_entity import (
     DataIngestionConfig,
     DataTransformationConfig,
@@ -48,6 +49,21 @@ class TrainPipeline:
             logging.info('exited the start_data_ingestion method of train pipeline class')
 
             return data_ingestion_artifact
+
+        except Exception as e:
+            raise SensorException(e, sys)
+
+    def start_data_validation(self, data_ingestion_artifact: DataIngestionArtifact)->DataValidationArtifact:
+        try:
+            logging.info('entered start_data_validation method of train pipeline class')
+
+            data_validation = DataValidation(data_ingestion_artifact)
+
+            data_validation_artifact = data_validation.initiate_data_validation()
+
+            logging.info('exited start_data_validation method of train pipeline class')
+
+            return data_validation_artifact
 
         except Exception as e:
             raise SensorException(e, sys)
